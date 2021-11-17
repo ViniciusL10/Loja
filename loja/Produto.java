@@ -15,8 +15,12 @@ public class Produto {
 	private ArrayList<Integer> qtdProduto = new ArrayList<Integer>();
 	
 	public void cadastrarProduto() {
-		codigo.add(+1);
 		int duvidas = 1;
+		for (int i = 0; i < tamanho2.length; i++) {
+			codigo.add(+1);
+		}
+		
+		try {
 		descricao.add(JOptionPane.showInputDialog("Informe o nome do produto"));
 		marca.add(JOptionPane.showInputDialog("Informe a marca do produto"));
 		while(duvidas == 1) {
@@ -43,7 +47,35 @@ public class Produto {
 	}
 		cor.add(JOptionPane.showInputDialog("Informe a cor do produto"));
 		preco.add(Double.parseDouble(JOptionPane.showInputDialog("Informe o preço do produto")));
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Formato inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
+		}
+		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
 	}
 	
+	public void excluirProduto() {
+		visualizaProduto();
+		int cod;
+		cod = Integer.parseInt(JOptionPane.showInputDialog(" Insira o codigo do produto a ser excluido "));
+		for (int i = 0; i < cod; i++) {
+			descricao.remove(i);
+			marca.remove(i);
+			preco.remove(i);
+			codigo.remove(i);
+			cor.remove(i);
+			tamanho.remove(i);
+		}
+	}
+	
+	public void visualizaProduto() {
+		if(descricao.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Sem produtos cadastrados", "Erro", JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+		for (int i = 0; i < descricao.size(); i++) {
+			System.out.println("Nome Produto: " + descricao.get(i) + "\nCodigo: " + codigo.get(i) + "\nMarca: " + marca.get(i) + "\n\n");
+		}
+		}
+	}
 	
 }

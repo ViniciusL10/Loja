@@ -8,21 +8,23 @@ public class Funcionario {
 	private float salarioBase;
 	private String funcao;
 
-	public void cadastraFuncioanrio() {
+	public void cadastraFuncionario() {
 		int opcao = 1;
-		while (opcao != 0) {
-			int erro = 1;
+		boolean exception = true;
+		while (opcao != 0 && exception) {
+			try {
 				cadastro =+1;
 				nome = JOptionPane.showInputDialog("Insira o nome do funcionário");
 				funcao = JOptionPane.showInputDialog("Qual a função do funcionario");
-				while(erro == 1) {
-					try {
 				salarioBase = Float.parseFloat(JOptionPane.showInputDialog("Informe o salário base do funcionario"));
-				erro = 2;
 				}catch (NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Formato inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
-			}
+			} catch (NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Voltando ao menu", "Cancelar", JOptionPane.INFORMATION_MESSAGE);
+					exception = false;
+				}
 		}
+				if(exception) {
 				opcao = JOptionPane.showConfirmDialog(null, "FUNCIONÁRIO: \n NOME: " + nome + "\n FUNÇÃO: " + funcao
 						+ "\n SALÁRIO: R$" + salarioBase + "\n Confirmar cadastro?");
 
@@ -34,7 +36,7 @@ public class Funcionario {
 					opcao = 0;
 				}
 		}
-	}
+		}
 
 	public void efetuarVenda() {
 

@@ -17,6 +17,7 @@ public class Cliente {
 		
 		while(opcao != 0) {
 		int erro = 1;
+		try {
 		cadastro =+1;
 		nome = JOptionPane.showInputDialog("Informe o nome do cliente");
 		while(erro == 1) {
@@ -37,6 +38,9 @@ public class Cliente {
 		else if( opcao2 == 1) {
 			identificacao=JOptionPane.showInputDialog("Informe o seu cnpj");
 			documento = "Pessoa Jurídica";
+		} 
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Formato inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
 		}
 		opcao = JOptionPane.showConfirmDialog(null, "CLIENTE N°: " + cadastro + "\n NOME: " + nome + "\n IDADE: " + idade
 				+ "\n DOCUMENTO : " + documento + "\n CNPJ/CPF :"+ identificacao +"\n Confirmar cadastro?");
@@ -45,7 +49,7 @@ public class Cliente {
 			JOptionPane.showMessageDialog(null, "Tudo certo! Prosseguindo...");
 		}
 		if (opcao == 2) {
-			JOptionPane.showMessageDialog(null, "Obrigado por usar nosso mini sistema!", "Obrigado", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Voltando para o Menu...", "Ok!", JOptionPane.PLAIN_MESSAGE);
 			opcao = 0;
 		}
 	}
