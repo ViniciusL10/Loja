@@ -16,13 +16,16 @@ public class Produto {
 	
 	public void cadastrarProduto() {
 		int duvidas = 1;
+		boolean exception = true;
 		for (int i = 0; i < tamanho2.length; i++) {
 			codigo.add(+1);
 		}
-		
+		if(exception) {
 		try {
 		descricao.add(JOptionPane.showInputDialog("Informe o nome do produto"));
 		marca.add(JOptionPane.showInputDialog("Informe a marca do produto"));
+		cor.add(JOptionPane.showInputDialog("Informe a cor do produto"));
+		preco.add(Double.parseDouble(JOptionPane.showInputDialog("Informe o preço do produto")));
 		while(duvidas == 1) {
 		int opcao = JOptionPane.showOptionDialog(null, "Escolha o tamanho do produto?",
 				"Escolha", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, tamanho2, tamanho2[0]);
@@ -45,12 +48,16 @@ public class Produto {
 			duvidas = JOptionPane.showConfirmDialog(null, "Você deseja cancelar?");
 		}
 	}
-		cor.add(JOptionPane.showInputDialog("Informe a cor do produto"));
-		preco.add(Double.parseDouble(JOptionPane.showInputDialog("Informe o preço do produto")));
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Formato inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
+		} catch(NullPointerException e) {
+			JOptionPane.showMessageDialog(null, "Voltando ao menu", "Cancelar", JOptionPane.INFORMATION_MESSAGE);
+			exception = false;
 		}
+		if(exception) {
 		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+		}
+	}
 	}
 	
 	public void excluirProduto() {
