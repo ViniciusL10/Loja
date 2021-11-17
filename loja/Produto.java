@@ -42,13 +42,13 @@ public class Produto {
 			tamanho.add("GG");
 			duvidas = 0;
 		}else {
-			duvidas = JOptionPane.showConfirmDialog(null, "Você deseja cancelar?");
+			duvidas = JOptionPane.showConfirmDialog(null, "VocÃª deseja cancelar?");
 		}
 	}
 		cor.add(JOptionPane.showInputDialog("Informe a cor do produto"));
-		preco.add(Double.parseDouble(JOptionPane.showInputDialog("Informe o preço do produto")));
+		preco.add(Double.parseDouble(JOptionPane.showInputDialog("Informe o preÃ§o do produto")));
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Formato inválido", "ERRO", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Formato invÃ¡lido", "ERRO", JOptionPane.ERROR_MESSAGE);
 		}
 		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
 	}
