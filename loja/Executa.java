@@ -34,7 +34,7 @@ public class Executa {
 			} else if (opcao2 == 3) {
 				p.visualizaProduto();
 			} else if(opcao2 == 4) {
-				
+				f.efetuarVenda();
 			} else if(opcao2 == 5) {
 				JOptionPane.showMessageDialog(null, "Saindo...");
 				repetir2 = false;
@@ -47,7 +47,13 @@ public class Executa {
 		}
 		else if(opcao == 1) {
 			int opcao3 = JOptionPane.showOptionDialog(null, "O que deseja fazer?",
-					"Escolha", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, escolhaCliente, escolhaCliente[0]); 
+					"Escolha", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, escolhaCliente, escolhaCliente[0]);
+			
+			if(opcao3 == 0) {
+				c.cadastrarCliente();
+			} else if (opcao3 == 1) {
+				c.pagarProduto();
+			}
 		}
 	}
 	}
